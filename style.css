@@ -9,8 +9,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
@@ -21,7 +21,7 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -45,13 +45,37 @@ table {
 }
 
 /**************************************************/
+/* Theme variables (dark is the default). */
+
+:root {
+  --bg: #0f0f12;
+  --text: #e4e4e7;
+  --text-secondary: #8b8b9b;
+  --muted: #6b6b7b;
+  --accent: #60a5fa;
+  --border: #26262c;
+  --surface: #17171c;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #1f2937;
+  --text-secondary: #4b5563;
+  --muted: #9ca3af;
+  --accent: #2563eb;
+  --border: #e5e7eb;
+  --surface: #f6f7f9;
+}
+
+/**************************************************/
 
 #body{
   font-family: 'Asap', roboto, sans-serif;
   font-size: 1em;
   line-height: 1.5em;
-  color: #e4e4e7;
-  background-color: #0f0f12;
+  color: var(--text);
+  background-color: var(--bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #main {
@@ -63,12 +87,12 @@ table {
 
 a {
   text-decoration: none;
-  color: #60a5fa;
+  color: var(--accent);
 }
 
 a:hover {
   text-decoration: none;
-  border-bottom: 1px solid #60a5fa;
+  border-bottom: 1px solid var(--accent);
 }
 
 i {
@@ -83,6 +107,31 @@ h1 {
   font-size: 2.4em;
   line-height: 2.4em;
   font-weight: 500;
+}
+
+/**************************************************/
+/* Dark/light mode toggle. */
+
+#theme-toggle {
+  position: fixed;
+  top: 1.5em;
+  right: 1.5em;
+  z-index: 100;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text);
+  font-size: 1em;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.2s ease;
+}
+
+#theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /**************************************************/
@@ -112,6 +161,59 @@ h1 {
 }
 
 /**************************************************/
+/* News section. */
+
+#news {
+  margin-top: 2em;
+}
+
+#news h2 {
+  color: var(--text);
+  font-size: 1.6em;
+  line-height: 2em;
+  margin-top: 0;
+}
+
+#news-list {
+  max-height: 13.5em;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.5em;
+  background-color: var(--surface);
+  padding: 0.75em 1em;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+
+#news-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+#news-list::-webkit-scrollbar-thumb {
+  background-color: var(--muted);
+  border-radius: 3px;
+}
+
+.news-item {
+  line-height: 1.5em;
+  margin: 0.4em 0;
+  color: var(--text-secondary);
+}
+
+.news-item .news-date {
+  display: inline-block;
+  width: 6em;
+  vertical-align: top;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.news-item .news-text {
+  display: inline-block;
+  width: calc(100% - 6.5em);
+}
+
+/**************************************************/
 /* Section buttons. */
 
 #menu {
@@ -127,11 +229,11 @@ h2 {
   font-size: 1.6em;
   line-height: 2.4em;
   margin-top: 0.5em;
-  color: #6b6b7b;
+  color: var(--muted);
 }
 
 .selected h2 {
-  color: #e4e4e7;
+  color: var(--text);
 }
 
 .button {
@@ -139,7 +241,7 @@ h2 {
   cursor: pointer;
   border: none;
   background: none;
-  color: #6b6b7b;
+  color: var(--muted);
   font-size: 1.6em;
   line-height: 2.4em;
   margin-top: 0.5em;
@@ -149,12 +251,12 @@ h2 {
 }
 
 .button:hover {
-  color: #e4e4e7;
+  color: var(--text);
 }
 
 .button:active,
 .button.is-checked {
-  color: #e4e4e7;
+  color: var(--text);
 }
 
 .button-group:after {
@@ -191,7 +293,7 @@ h2 {
 .list-item p.date {
   display: inline-block;
   width: 3em;
-  color: #6b6b7b;
+  color: var(--muted);
 }
 
 /**************************************************/
@@ -234,11 +336,11 @@ h2 {
 }
 
 .toggle-button a {
-  color: #6b6b7b;
+  color: var(--muted);
 }
 
 .toggle-button a:hover {
-  color: #60a5fa;
+  color: var(--accent);
 }
 
 /**************************************************/
@@ -275,11 +377,11 @@ h3 {
 }
 
 h3 a {
-  color: #e4e4e7;
+  color: var(--text);
 }
 
 h3 a:hover {
-  color: #60a5fa;
+  color: var(--accent);
 }
 
 .publication {
@@ -289,7 +391,7 @@ h3 a:hover {
 .publication p {
   font-size: 1em;
   line-height: 1.5em;
-  color: #8b8b9b;
+  color: var(--text-secondary);
 }
 
 .project-description {
@@ -297,11 +399,20 @@ h3 a:hover {
   float: left;
 }
 
+/* Publications without a video/image thumbnail span the full width. */
+.publication.no-thumb .project-description {
+  width: 100%;
+}
+
+.award {
+  color: #d3a13c;
+}
+
 /**************************************************/
 /* Subtle footer at the bottom of the page. */
 
 #footer {
-  color: #6b6b7b;
+  color: var(--muted);
   position: absolute;
   bottom: 0;
   line-height: 2.5em;
