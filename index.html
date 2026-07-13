@@ -20,6 +20,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
+    <!-- Set theme before first paint to avoid a flash of the wrong theme -->
+    <script>
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
     <!-- Custom Style -->
     <link rel="stylesheet" href="style.css">
 
@@ -35,6 +46,8 @@
   </head>
 
   <body id="body">
+
+    <button id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode"></button>
 
     <div id="main">
       <div id="intro">
@@ -59,7 +72,25 @@
           <img src="images/profile.jpg">
         </div>
       </div>
-      
+
+      <!-- News -->
+      <div id="news">
+        <h2>News</h2>
+        <div id="news-list">
+          <div class="news-item"><span class="news-date">Feb 2026</span><span class="news-text">New demo: <a href="https://youtu.be/e1wOCFrdhc8">humanoid robots deployed in real-world industrial tasks</a> at VinRobotics.</span></div>
+          <div class="news-item"><span class="news-date">Jan 2026</span><span class="news-text"><a href="https://arxiv.org/abs/2506.12095">DoublyAware</a> is accepted to <i>IEEE Robotics and Automation Letters (RA-L)</i>.</span></div>
+          <div class="news-item"><span class="news-date">Oct 2025</span><span class="news-text"><a href="https://github.com/mkhangg/flow_mp">FlowMP</a> is presented at <i>IROS 2025</i>.</span></div>
+          <div class="news-item"><span class="news-date">2025</span><span class="news-text"><a href="https://sites.google.com/view/tensor-sampling/">Model Tensor Planning</a> is accepted to <i>Transactions on Machine Learning Research (TMLR)</i>.</span></div>
+          <div class="news-item"><span class="news-date">2025</span><span class="news-text"><a href="https://language-driven-closed-loop-grasping.github.io/">Language-driven closed-loop grasping</a> is published in <i>Mechatronics</i>.</span></div>
+          <div class="news-item"><span class="news-date">2025</span><span class="news-text">Joined <a href="https://vinrobotics.net/">VinRobotics</a> as a Founding Member and Chief of Robotics.</span></div>
+          <div class="news-item"><span class="news-date">2025</span><span class="news-text">Appointed Visiting Assistant Professor at <a href="https://vinuni.edu.vn/people/vu-nhat-minh/">VinUniversity</a> (CAIR - Center for AI Research).</span></div>
+          <div class="news-item"><span class="news-date">Oct 2024</span><span class="news-text">&#127942; <a href="https://www.tuwien.at/en/all-news/news/roboter-lernt-waschbeckenputzen">ProSIP</a> won the <b>Best Application Paper Award</b> at <i>IROS 2024</i>.</span></div>
+          <div class="news-item"><span class="news-date">2024</span><span class="news-text">Received <b>Best Reviewer Awards</b> from <i>ICRA</i> and <i>IEEE RA-L</i>.</span></div>
+          <div class="news-item"><span class="news-date">Oct 2023</span><span class="news-text">&#11088; <a href="https://openad2023.github.io/">Open-vocabulary affordance detection</a> was a <b>Best Overall Paper Award finalist</b> at <i>IROS 2023</i>.</span></div>
+          <div class="news-item"><span class="news-date">2023</span><span class="news-text">Completed my Ph.D. at TU Wien, <i>summa cum laude</i>.</span></div>
+        </div>
+      </div>
+
       <div id="filters" class="button-group">
         <button class="button is-checked" data-filter=".highlight">Highlights</button>
         <button class="button" data-filter=".publication">Publications</button>
@@ -145,7 +176,19 @@
                 <a href="https://arxiv.org/pdf/2506.12095">PDF</a>
             </p>
           </div>
-        </div> 
+        </div>
+
+          <!--TD-GRPC-->
+          <div class="list-item publication no-thumb" data-category="publication">
+            <div class="project-description">
+              <h3><a href="https://arxiv.org/abs/2505.13549">TD-GRPC: Temporal Difference Learning with Group Relative Policy Constraint for Humanoid Locomotion</a></h3>
+              <p>
+                Khang Nguyen, Khai Nguyen, An T. Le, Jan Peters, Manfred Huber, Ngo Anh Vien, Minh Nhat Vu<br>
+                  <i>arXiv preprint 2025</i><br>
+                  <a href="https://arxiv.org/abs/2505.13549">PDF</a>
+              </p>
+            </div>
+          </div>
 
           <!--LGD-->
           <div class="list-item publication" data-category="publication">
@@ -196,7 +239,7 @@
                 Khang Nguyen, An T. Le, Tien Pham, Manfred Huber, Jan Peters, Minh Nhat Vu<br>
                   <i>International Conference on Intelligent Robots and Systems (IROS) 2025</i><br>
                   <a href="https://github.com/mkhangg/flow_mp">Code</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;
-                  <a href="https://openreview.net/forum?id=fk1ZZdXCE3">PDF</a>
+                  <a href="https://arxiv.org/abs/2503.06135">PDF</a>
               </p>
             </div>
           </div> 
@@ -230,7 +273,7 @@
               <p>
                 Christoph Unger, Christian Hartl-Nesic, Minh Nhat Vu, Andreas Kugi <br>
                   <i>International Conference on Intelligent Robots and Systems (IROS) 2024</i><br>
-                  <font color="49bf9"><i>&#9733; Best Application Paper Award (Winner), IROS &#9733;</i></font><br>
+                  <span class="award"><i>&#9733; Best Application Paper Award (Winner), IROS &#9733;</i></span><br>
                   <a href="https://ieeexplore.ieee.org/abstract/document/10802255">PDF</a>
             </div>
           </div>
@@ -264,7 +307,7 @@
               <p>
                 Toan Nguyen, Minh Nhat Vu, An Vuong, Dzung Nguyen, Thieu Vo, Ngan Le, Anh Nguyen<br>
                   <i>International Conference on Intelligent Robots and Systems (IROS) 2023</i><br>
-                  <font color="49bf9"><i>&#9733; Best Overall Paper Award (Finalist), IROS  &#9733;</i></font><br>
+                  <span class="award"><i>&#9733; Best Overall Paper Award (Finalist), IROS  &#9733;</i></span><br>
                   <a href="https://openad2023.github.io/">Webpage</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;
                   <a href="https://arxiv.org/pdf/2303.02401">PDF</a>
               </p>
@@ -310,6 +353,28 @@
 
 
     </div>
+
+    <script>
+      // Dark/light mode toggle (kept in its own script block so it works
+      // even if the CDN libraries below fail to load).
+      var themeToggle = document.getElementById('theme-toggle');
+
+      function update_theme_icon() {
+        var theme = document.documentElement.getAttribute('data-theme');
+        // Show the icon of the theme you would switch to.
+        themeToggle.innerHTML = (theme === 'dark') ? '&#9728;&#65039;' : '&#127769;';
+      }
+
+      themeToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = (current === 'dark') ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        update_theme_icon();
+      });
+
+      update_theme_icon();
+    </script>
 
     <script>
 
