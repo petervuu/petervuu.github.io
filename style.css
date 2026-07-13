@@ -165,17 +165,25 @@ h1 {
 
 #news {
   margin-top: 2em;
+  display: flex;
+  gap: 1.5em;
+}
+
+.news-col {
+  flex: 1;
+  min-width: 0;
 }
 
 #news h2 {
   color: var(--text);
-  font-size: 1.6em;
-  line-height: 2em;
+  font-size: 1.4em;
+  line-height: 1.8em;
   margin-top: 0;
+  margin-bottom: 0.25em;
 }
 
-#news-list {
-  max-height: 13.5em;
+.news-list {
+  max-height: 15em;
   overflow-y: auto;
   border: 1px solid var(--border);
   border-radius: 0.5em;
@@ -185,24 +193,24 @@ h1 {
   scrollbar-color: var(--muted) transparent;
 }
 
-#news-list::-webkit-scrollbar {
+.news-list::-webkit-scrollbar {
   width: 6px;
 }
 
-#news-list::-webkit-scrollbar-thumb {
+.news-list::-webkit-scrollbar-thumb {
   background-color: var(--muted);
   border-radius: 3px;
 }
 
 .news-item {
   line-height: 1.5em;
-  margin: 0.4em 0;
+  margin: 0.5em 0;
   color: var(--text-secondary);
 }
 
 .news-item .news-date {
   display: inline-block;
-  width: 6em;
+  width: 4.5em;
   vertical-align: top;
   color: var(--muted);
   font-weight: 500;
@@ -210,7 +218,54 @@ h1 {
 
 .news-item .news-text {
   display: inline-block;
-  width: calc(100% - 6.5em);
+  width: calc(100% - 5em);
+  vertical-align: top;
+}
+
+/**************************************************/
+/* Research interests. */
+
+#research {
+  margin-top: 2.5em;
+}
+
+#research h2 {
+  color: var(--text);
+  font-size: 1.4em;
+  line-height: 1.8em;
+  margin-top: 0;
+  margin-bottom: 0.35em;
+}
+
+.research-intro {
+  color: var(--text-secondary);
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+
+.research-item {
+  color: var(--text-secondary);
+  line-height: 1.5em;
+  margin-bottom: 0.9em;
+  padding-left: 1em;
+  border-left: 2px solid var(--border);
+}
+
+.research-item b {
+  color: var(--text);
+}
+
+.research-links {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+.research-collab {
+  color: var(--text-secondary);
+  line-height: 1.5em;
+  margin-top: 0.5em;
 }
 
 /**************************************************/
